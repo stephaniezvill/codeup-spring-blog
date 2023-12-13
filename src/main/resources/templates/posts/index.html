@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <th:block th:replace="~{partials/partials :: head (title='All Posts')}"></th:block>
+</head>
+
+<body>
+
+<nav th:replace="~{partials/partials :: navbar}">
+</nav>
+
+<h1>All Posts</h1>
+
+<div th:if="${posts != null}">
+  <div th:each="post : ${posts}">
+    <h2><a th:href="@{|/posts/${post.id}|}">[[${post.title}]]</a></h2>
+    <p th:text="${post.body}"></p>
+  </div>
+</div>
+
+<footer th:insert="~{partials/partials :: footer}" class="ads-page-footer ads-color-french-violet"></footer>
+
+<th:block th:replace="~{partials/partials :: scripts}"></th:block>
+
+</body>
+</html>

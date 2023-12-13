@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <th:block th:replace="~{partials/partials :: head (title='Submit an Ad')}"></th:block>
+</head>
+
+<body>
+
+<nav th:replace="~{partials/partials :: navbar}">
+</nav>
+
+<header th:insert="~{partials/partials :: header (heading='Create Ad')}"></header>
+
+<div class="container-fluid">
+
+    <form action="/ads/create" method="post">
+        <div>
+            <label class="form-label" for="title">Title:</label>
+            <input class="form-control" type="text" name="title" id="title"><br>
+        </div>
+        <div>
+            <label class="form-label" for="description">Description:</label>
+            <textarea class="form-control" name="description" id="description"></textarea>
+        </div>
+
+        <button class="mt-4 btn ads-color-verdigris">Submit</button>
+    </form>
+</div>
+
+<footer th:insert="~{partials/partials :: footer}" class="ads-page-footer ads-color-french-violet"></footer>
+
+</body>
+</html>

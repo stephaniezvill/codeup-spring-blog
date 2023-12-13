@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <th:block th:replace="~{partials/partials :: head (title='Post Detail')}"></th:block>
+</head>
+
+<body>
+
+<nav th:replace="~{partials/partials :: navbar}">
+</nav>
+
+<h1>Post Detail</h1>
+
+<h2 th:text="${post.id}"></h2>
+<h2 th:text="${post.title}"></h2>
+<h4 th:text="${post.body}"></h4>
+
+<footer th:insert="~{partials/partials :: footer}" class="ads-page-footer ads-color-french-violet"></footer>
+
+<th:block th:replace="~{partials/partials :: scripts}"></th:block>
+
+</body>
+</html>

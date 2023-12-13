@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <th:block th:replace="~{partials/partials :: head (title='Home')}"></th:block>
+</head>
+
+<body>
+
+<nav th:replace="~{partials/partials :: navbar}">
+</nav>
+
+<div class="container-fluid">
+
+    <h2 class="home-heading text-center">Welcome to AdBlaster!!1!</h2>
+
+    <h5 class="text-center">Because people LOVE a crapton of ads.</h5>
+
+</div>
+
+<footer th:insert="~{partials/partials :: footer}" class="ads-page-footer ads-color-french-violet"></footer>
+
+</body>
+</html>

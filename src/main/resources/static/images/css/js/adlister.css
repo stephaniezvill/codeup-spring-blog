@@ -1,0 +1,65 @@
+.ads-page-heading {
+    background-color: orange;
+    padding-left: 10px;
+    height: 1.4em;
+    padding-top: .1em;
+}
+
+.ads-page-footer {
+    background-color: orange;
+    padding-left: 10px;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.ads-color-french-violet {
+    background-color: #731DD8;
+    color: #E4DFDA;
+}
+
+.ads-color-verdigris {
+    background-color: #48A9A6;
+}
+
+.ads-color-timberwolf {
+    background-color: #E4DFDA;
+}
+
+.ads-color-ecru {
+    background-color: #D4B483;
+}
+
+.ads-color-indian-red {
+    background-color: #C1666B;
+}
+
+.ads-banner-image {
+    width: 100%;
+}
+
+.ads-banner-text-left {
+    color: #C1666B;
+    font-family: Arial, sans-serif;
+    font-size: xx-large;
+}
+
+.ads-banner-text-right {
+    color: #48A9A6;
+    font-family: Arial, sans-serif;
+    font-size: xx-large;
+}
+
+.home-heading {
+    margin-top: 20px;
+    color: #731DD8;
+}
+
+.home-sub-heading {
+    color: #C1666B;
+    margin-top: 10px;
+}

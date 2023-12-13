@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Roll Dice</title>
+</head>
+<body>
+
+<div th:if="${messages != null}">
+  <h2 th:each="message : ${messages}">[[${message}]]</h2>
+</div>
+
+<h4>Guess a number from 1 to 6</h4>
+<a href="/roll-dice/1">Guess 1</a><br>
+<a href="/roll-dice/2">Guess 2</a><br>
+<a href="/roll-dice/3">Guess 3</a><br>
+<a href="/roll-dice/4">Guess 4</a><br>
+<a href="/roll-dice/5">Guess 5</a><br>
+<a href="/roll-dice/6">Guess 6</a>
+</body>
+</html>

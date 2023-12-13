@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <th:block th:replace="~{partials/partials :: head (title='Create Post')}"></th:block>
+</head>
+
+<body>
+
+<nav th:replace="~{partials/partials :: navbar}">
+</nav>
+
+<h1>Create Post</h1>
+
+<form action="/posts/create" method="post">
+
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title">
+
+    <label for="body">Body:</label>
+    <textarea id="body" name="body"></textarea>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+<footer th:insert="~{partials/partials :: footer}" class="ads-page-footer ads-color-french-violet"></footer>
+
+<th:block th:replace="~{partials/partials :: scripts}"></th:block>
+
+</body>
+</html>
