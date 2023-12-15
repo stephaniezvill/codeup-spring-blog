@@ -2,6 +2,7 @@ package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +24,7 @@ public class Ad {
     private String description;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name="user_id")
     private User user;
 
     public Ad(String title, String description) {

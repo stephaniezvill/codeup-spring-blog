@@ -1,6 +1,7 @@
 package com.codeup.codeupspringblog.controllers;
 
 import com.codeup.codeupspringblog.dao.AdDao;
+import com.codeup.codeupspringblog.dao.UserRepository;
 import com.codeup.codeupspringblog.models.Ad;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import java.util.List;
 public class AdController {
 
     private AdDao adDao;
+    private UserRepository userDao;
 
 //    public AdController(AdDao adDao){
 //        this.adDao = adDao;
@@ -50,6 +52,7 @@ public class AdController {
     public String doCreate(@RequestParam(name="title") String title,
                            @RequestParam(name = "description") String description) {
         Ad ad = new Ad(title, description);
+        ad.setUser(userDao.findUserById(1L));
         adDao.save(ad);
         return "redirect:/ads";
     }

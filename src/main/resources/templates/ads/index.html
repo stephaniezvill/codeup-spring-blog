@@ -19,12 +19,14 @@
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
+            <th scope="col">Username</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="ad : ${ads}">
             <td><a th:href="@{|/ads/${ad.id}|}">[[${ad.title}]]</a></td>
             <td th:text="${ad.description}"></td>
+            <td th:text="${ad.user.username}"></td>
         </tr>
         </tbody>
     </table>
