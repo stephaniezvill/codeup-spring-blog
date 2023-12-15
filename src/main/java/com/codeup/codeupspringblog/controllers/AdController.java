@@ -3,6 +3,7 @@ package com.codeup.codeupspringblog.controllers;
 import com.codeup.codeupspringblog.dao.AdDao;
 import com.codeup.codeupspringblog.dao.UserRepository;
 import com.codeup.codeupspringblog.models.Ad;
+import com.codeup.codeupspringblog.services.AdEmailService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,4 +57,18 @@ public class AdController {
         adDao.save(ad);
         return "redirect:/ads";
     }
+    private final AdEmailService emailService;
+
+    public AdController(AdEmailService emailService) {
+        this.emailService = emailService;
+    }
+
+    @PostMapping("/ads/create")
+    public String createAd(@ModelAttribute Ad ad){
+        ad.setUser(userDao.findUserById(1L));
+        adDao.save(ad);
+        emailService.prepareAndSend(ad, ad.getTitle(), ad.getDescription());
+        return "redirect:/ads";
+    }
+
 }
