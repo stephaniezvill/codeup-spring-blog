@@ -19,6 +19,7 @@ public class AdController {
 
     private AdDao adDao;
     private UserRepository userDao;
+    private CategoryDao categoryDao;
 
 //    public AdController(AdDao adDao){
 //        this.adDao = adDao;
@@ -26,6 +27,10 @@ public class AdController {
 
     @GetMapping(value = {"", "/"})
     public String adIndex(Model model){
+        //to test the custom dao function
+        //User testUser = userDao.findUserByHisHerNumber(1L);
+        //System.out.println(testUser.getUsername());
+
         List<Ad> ads = adDao.findAll();
         model.addAttribute("ads", ads);
         return "/ads/index";
@@ -45,30 +50,36 @@ public class AdController {
     }
 
     @GetMapping({"/create", "/create/"})
-    public String showCreate() {
+    public String showCreate(Model model) {
+        model.addAttribute("ad", new Ad());
+        model.addAttribute("categories",categoryDao.findAll());
         return "/ads/create";
     }
 
     @PostMapping({"/create", "/create/"})
-    public String doCreate(@RequestParam(name="title") String title,
-                           @RequestParam(name = "description") String description) {
-        Ad ad = new Ad(title, description);
+    public String doCreate(@ModelAttribute Ad ad) {
         ad.setUser(userDao.findUserById(1L));
         adDao.save(ad);
         return "redirect:/ads";
     }
-    private final AdEmailService emailService;
 
-    public AdController(AdEmailService emailService) {
-        this.emailService = emailService;
+    @GetMapping("/{id}/edit")
+    public String showEditForm(@pathVariable long id, Model model) {
+        Ad ad;
+        if (adDao.findById(id).isPresent()) {
+            ad = adDao.findById(id).get();
+        } else {
+            ad = null;
+        }
+        model.addAttribute("ad", ad);
+        return "/ads/edit";
     }
 
-    @PostMapping("/ads/create")
-    public String createAd(@ModelAttribute Ad ad){
-        ad.setUser(userDao.findUserById(1L));
-        adDao.save(ad);
-        emailService.prepareAndSend(ad, ad.getTitle(), ad.getDescription());
+    @PostMapping ("/{id}/edit")
+    public String editAd(@ModelAttribute Ad modifiedAd){
+        Ad oldAd = adDao.findById(modifiedAd.getId()).get();
+        modifiedAd.setUser(oldAd.getUser());
+        adDao.save(modifiedAd);
         return "redirect:/ads";
     }
-
-}
+    }
