@@ -64,7 +64,7 @@ public class AdController {
     }
 
     @GetMapping("/{id}/edit")
-    public String showEditForm(@pathVariable long id, Model model) {
+    public String showEditForm(@PathVariable long id, Model model) {
         Ad ad;
         if (adDao.findById(id).isPresent()) {
             ad = adDao.findById(id).get();
